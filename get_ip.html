@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Getting Clients IP</title>
+     
+    <style>
+    h1 {
+        color: green;
+    }
+    </style>
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+     
+    <script>
+     
+    // Add "https://ipinfo.io" statement
+    // this will communicate with the ipify servers
+    // in order to retrieve the IP address
+    $.get("https://ipinfo.io", function(response) {
+             //alert(response.ip);
+             var xmlHttp = new XMLHttpRequest();
+             xmlHttp.open( "GET", "http://api.ipstack.com/"+String(response.ip)+"?access_key=90fe7e63df8e46c481d0a6f88ca26f41", false ); // false for synchronous request
+             xmlHttp.send( null );
+             console.log(JSON.parse(xmlHttp.responseText));
+
+        }, "json")
+         
+        // "json" shows that data will be fetched in json format
+    </script>
+</head>
+ 
+<body>
+    <center>
+        <h1>GeeksforGeeks</h1>
+        <h3>Getting Client IP address</h3>
+    </center>
+</body>
+ 
+</html>
